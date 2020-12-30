@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog> 
+ <journal>
+ <catalogId>catalog2</catalogId>
+ <journal_title>Oracle Magazine</journal_title>
+ <publisher>Oracle Publishing</publisher> 
+ <edition>September-October 2005</edition>
+  <article_section>Developer</article_section>
+  <title>Creating Search Pages</title>
+    <author>Steve Muench</author> 
+</journal>
+</catalog>

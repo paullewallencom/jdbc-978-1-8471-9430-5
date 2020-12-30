@@ -1,0 +1,8 @@
+<page xmlns:xsql="urn:oracle-xsql" connection="jdbc/xsqlConnectionDS">
+   <xsql:set-page-param name="JOURNAL" ignore-empty-value="no" value="Oracle Magazine"/>
+   <xsql:set-page-param name="PUBLISHER" ignore-empty-value="no" value="Oracle Publishing"/>
+   <xsql:query bind-params="JOURNAL PUBLISHER"  max-rows="-1" null-indicator="no" tag-case="lower">
+SELECT  JOURNAL, PUBLISHER, EDITION, TITLE, AUTHOR from 
+OE.Catalog WHERE JOURNAL=? AND PUBLISHER=?
+</xsql:query>
+</page> 

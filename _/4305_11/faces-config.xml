@@ -1,0 +1,39 @@
+<managed-bean>
+    <managed-bean-name>backing_catalog</managed-bean-name>
+    <managed-bean-class>mypackage.backing.Catalog</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1catalog.jsp-->
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>PanelGridMBean</managed-bean-name>
+    <managed-bean-class>example.panelgrid.PanelGridBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+ <managed-property>
+ <property-name>catalogId</property-name>
+ <value>1</value>
+ </managed-property>
+ <managed-property>
+ <property-name>journal</property-name>
+ <value>Oracle Magazine</value>
+ </managed-property>
+ <managed-property>
+ <property-name>publisher</property-name>
+ <value>Oracle Publishing</value>
+ </managed-property>
+ <managed-property>
+ <property-name>edition</property-name>
+ <value>Nov-Dec 2004</value>
+ </managed-property>
+ <managed-property>
+ <property-name>title</property-name>
+ <value>Database Resource Manager</value>
+ </managed-property>
+ <managed-property>
+ <property-name>author</property-name>
+ <value>Kimberly Floss</value>
+ </managed-property>
+ <managed-property>
+ <property-name>href</property-name>
+ <value>http://www.oracle.com/technology/oramag/oracle/04-nov/o64tuning.html</value>
+ </managed-property>
+  </managed-bean>

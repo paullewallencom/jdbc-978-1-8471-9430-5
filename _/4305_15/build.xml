@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<project name="Hibernate"         
+default="schemaGenerator" basedir="C:\Hibernate">
+  <property name="src.dir" value="src"/>
+  <property name="classes.dir" value="classes"/>
+  <property name="hibernate-3.2" value="hibernate-3.2"/>
+  <property name="hibernate-2.1" value="hibernate-2.1"/>
+  <property name="hibernate.mappings" value="mappings"/>
+  <property name="jdbc" value="C:\oracle\product\10.2.0\db_1\jdbc\lib"/>
+  <property name="hibernate.extensions" value="tools"/>
+  <property name="hibernate.properties" value="properties"/>
+  <path id="project.class.path">  
+  <pathelement location="${classes.dir}" />  
+  <fileset dir="${hibernate-3.2}">
+        <include name="hibernate3.jar"/>
+      </fileset>
+      <fileset dir="${hibernate-2.1}">
+        <include name="hibernate2.jar"/>
+      </fileset>
+      <fileset dir="${hibernate-3.2}/lib">
+        <include name="*.jar"/>
+      </fileset>
+      <fileset dir="${hibernate-2.1}/lib">
+        <include name="commons-lang-1.0.1.jar"/>
+      </fileset>
+        <fileset dir="${hibernate.extensions}/lib">
+        <include name="*.jar"/>
+      </fileset>
+      <fileset dir="${hibernate.extensions}">
+        <include name="hibernate-tools.jar"/>
+      </fileset>
+      <fileset dir="${jdbc}">
+        <include name="ojdbc14.jar"/>
+      </fileset>
+ </path>
+  <target name="init"> 
+<mkdir dir="${src.dir}"/>
+  <mkdir dir="${classes.dir}"/>
+       </target>
+  <taskdef name="javaGen"
+           classname="net.sf.hibernate.tool.hbm2java.Hbm2JavaTask"
+           classpathref="project.class.path"/>  
+           <target name="javaGenerator" depends="init">
+    <javaGen output="${src.dir}">
+      <fileset dir="${hibernate.mappings}">
+        <include name="catalog.hbm.xml"/>
+      </fileset>
+    </javaGen>
+  </target>
+  <target name="compile" depends="javaGenerator">
+     <javac srcdir="${src.dir}"
+         destdir="${classes.dir}">
+         <classpath refid="project.class.path"/></javac>
+  </target>
+ <taskdef name="schemaGen"
+classname="org.hibernate.tool.hbm2ddl.SchemaExportTask"
+classpathref="project.class.path"/>
+    <target name="schemaGenerator" depends="compile">   
+<schemaGen properties="${hibernate.properties}/hibernate.properties" output="schema.ddl" create="true" quiet="no">
+      <fileset 
+dir="${hibernate.mappings}">
+        <include name="catalog.hbm.xml"/>
+      </fileset>
+</schemaGen>
+  </target>
+</project>
